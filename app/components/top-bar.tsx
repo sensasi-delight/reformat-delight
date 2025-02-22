@@ -6,9 +6,11 @@ import DarkModeToggleButton from "./dark-mode-toggle-button";
 
 export default function TopBar() {
   return (
-    <AppBar variant="outlined" elevation={0} color="transparent">
+    <AppBar variant="outlined" elevation={0} color="inherit" position="static">
       <Container
+        maxWidth="md"
         sx={{
+          py: 0.5,
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
