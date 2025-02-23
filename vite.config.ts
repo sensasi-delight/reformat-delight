@@ -1,19 +1,19 @@
+import { cjsInterop } from "vite-plugin-cjs-interop";
+import { defineConfig } from "vite";
 import { viteCommonjs } from "@originjs/vite-plugin-commonjs";
 import { vitePlugin as remix } from "@remix-run/dev";
-import { defineConfig } from "vite";
-import { cjsInterop } from "vite-plugin-cjs-interop";
+import { vercelPreset } from "@vercel/remix/vite";
 import tsconfigPaths from "vite-tsconfig-paths";
 import path from "path";
 
 export default defineConfig({
+  ssr: {
+    noExternal: process.env.NODE_ENV === "production" ? ["@mui/**"] : [],
+  },
   plugins: [
-    viteCommonjs({
-      include: ["@mui/system/**", "@mui/material/**", "@mui/icons-material/**"],
-    }),
+    viteCommonjs(),
     tsconfigPaths({ loose: true }),
     remix({
-      ignoredRouteFiles: ["**/.*"],
-      serverModuleFormat: "esm",
       future: {
         v3_fetcherPersist: true,
         v3_relativeSplatPath: true,
@@ -21,9 +21,13 @@ export default defineConfig({
         v3_singleFetch: true,
         v3_lazyRouteDiscovery: true,
       },
+      ignoredRouteFiles: ["**/.*"],
+      presets: [vercelPreset()],
+      serverModuleFormat: "esm",
     }),
     cjsInterop({
-      dependencies: ["@mui/material/**"],
+      dependencies:
+        process.env.NODE_ENV === "production" ? [] : ["@mui/material/**"],
     }),
   ],
   resolve: {
