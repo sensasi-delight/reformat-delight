@@ -7,7 +7,7 @@ import { RemixServer } from "@remix-run/react";
 import createEmotionServer from "@emotion/server/create-instance";
 import ReactDOMServer from "react-dom/server";
 // materials
-import ThemeProvider from "@mui/material/styles/ThemeProvider";
+import { ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 //
 import createEmotionCache from "./themes/create-emotion-cache";
