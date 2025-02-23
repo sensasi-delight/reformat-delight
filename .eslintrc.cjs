@@ -24,6 +24,22 @@ module.exports = {
   // Base config
   extends: ["eslint:recommended"],
 
+  rules: {
+    "no-restricted-imports": [
+      "error",
+      {
+        paths: [
+          {
+            name: "@mui/material",
+            message:
+              "Please use `import [Component] from '@mui/material/[Component]'` instead.",
+          },
+        ],
+        patterns: ["!@mui/material/*"],
+      },
+    ],
+  },
+
   overrides: [
     // React
     {
