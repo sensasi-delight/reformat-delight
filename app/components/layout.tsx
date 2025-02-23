@@ -90,9 +90,23 @@ const Layout = withEmotionCache(
             </Typography>
 
             <Alert severity="info">
-              <Typography variant="caption">
+              <Typography variant="caption" component="div">
                 <strong>Data Privacy:</strong> All conversions happen locally in
                 your browser - we never see your data.
+              </Typography>
+
+              <Typography variant="caption" component="div">
+                You can investigate our code on{" "}
+                <Link href="https://github.com/sensasi-delight/reformat-delight">
+                  GitHub
+                  <MoveUpRightIcon
+                    size="0.875rem"
+                    style={{
+                      verticalAlign: "text-bottom",
+                    }}
+                  />
+                </Link>
+                .
               </Typography>
             </Alert>
 
