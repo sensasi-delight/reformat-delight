@@ -7,10 +7,11 @@ import tsconfigPaths from "vite-tsconfig-paths";
 import path from "path";
 
 export default defineConfig({
+  ssr: {
+    noExternal: process.env.NODE_ENV === "production" ? ["@mui/**"] : [],
+  },
   plugins: [
-    viteCommonjs({
-      include: ["@mui/system/**", "@mui/material/**", "@mui/icons-material/**"],
-    }),
+    viteCommonjs(),
     tsconfigPaths({ loose: true }),
     remix({
       future: {
@@ -25,7 +26,8 @@ export default defineConfig({
       serverModuleFormat: "esm",
     }),
     cjsInterop({
-      dependencies: ["@mui/material/**"],
+      dependencies:
+        process.env.NODE_ENV === "production" ? [] : ["@mui/material/**"],
     }),
   ],
   resolve: {
