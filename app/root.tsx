@@ -1,7 +1,9 @@
-import { Outlet } from "@remix-run/react";
+// vendors
 import type { LinksFunction, MetaFunction } from "@remix-run/node";
-
+import { Outlet } from "@remix-run/react";
+//
 export { default as Layout } from "./components/layout";
+import ICON_LINKS from "./statics/icon-links";
 
 export const links: LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -14,6 +16,8 @@ export const links: LinksFunction = () => [
     rel: "stylesheet",
     href: "https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap",
   },
+
+  ...ICON_LINKS,
 ];
 
 export default function App() {
@@ -73,6 +77,11 @@ export const meta: MetaFunction = ({ matches }) => {
         },
         description: "Free online CSV to Excel converter",
       },
+    },
+
+    {
+      name: "apple-mobile-web-app-title",
+      content: "Reformat",
     },
   ];
 };
