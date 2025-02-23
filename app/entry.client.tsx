@@ -4,11 +4,15 @@
  * For more information, see https://remix.run/file-conventions/entry.client
  */
 
+// vendors
 import { CacheProvider } from "@emotion/react";
-import { CssBaseline, ThemeProvider } from "@mui/material";
+import { hydrateRoot } from "react-dom/client";
 import { RemixBrowser } from "@remix-run/react";
 import { startTransition, StrictMode, useMemo, useState } from "react";
-import { hydrateRoot } from "react-dom/client";
+// materials
+import CssBaseline from "@mui/material/CssBaseline";
+import ThemeProvider from "@mui/material/styles/ThemeProvider";
+//
 import ClientStyleContext from "./themes/client-style-context";
 import createEmotionCache from "./themes/create-emotion-cache";
 import theme from "./themes/theme";
